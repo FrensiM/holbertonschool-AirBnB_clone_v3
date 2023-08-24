@@ -17,11 +17,13 @@ tables = {"amenities": Amenity, "cities": City,
 
 @app_views.route('/status')
 def status():
+    '''status route'''
     return jsonify(status="OK")
 
 
 @app_views.route('/stats')
 def stats():
+    ''''status fun'''
     counts = {}
     for key, val in tables.items():
         counts[key] = storage.count(val)
