@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" state api module created """
+"""
+state api module created 
+"""
 
 
 from models.state import State
@@ -11,7 +13,9 @@ from api.v1.views import app_views
 @app_views.route('/states/', methods=['GET', 'POST'], defaults={'id': None})
 @app_views.route('/states/<id>', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def state_view(id=None):
-    """ state view """
+    """
+    state view 
+    """
     if id is not None:
         my_states = storage.all(State)
         key = '{}.{}'.format(State.__name__, id)
