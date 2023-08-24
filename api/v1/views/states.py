@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """
-state api module created 
+route for handling State objects and operations
 """
-
-
+from flask import jsonify, abort, request
+from api.v1.views import app_views, storage
 from models.state import State
-from flask import jsonify, request
-from models import storage
-from api.v1.views import app_views
+
 
 '''app routes'''
 @app_views.route('/states/', methods=['GET', 'POST'], defaults={'id': None})
