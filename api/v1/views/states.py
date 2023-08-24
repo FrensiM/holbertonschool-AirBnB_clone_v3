@@ -7,7 +7,7 @@ from flask import jsonify, request
 from models import storage
 from api.v1.views import app_views
 
-
+'''app routes'''
 @app_views.route('/states/', methods=['GET', 'POST'], defaults={'id': None})
 @app_views.route('/states/<id>', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def state_view(id=None):
