@@ -62,17 +62,17 @@ def state_put(state_id):
     :param state_id: state object ID
     :return: state object and 200 on success, or 400 or 404 on failure
     """
-    state_json = request.get_json(silent=True)
-    if state_json is None:
-        abort(400, 'Not a JSON')
-    fetched_obj = storage.get("State", str(state_id))
+    fetched_obj = storage.get(State, state_id)
+    state_json = request.get_json()
     if fetched_obj is None:
+        abort(400, 'Not a JSON')
+    if state_json is None:
         abort(404)
     for key, val in state_json.items():
         if key not in ["id", "created_at", "updated_at"]:
             setattr(fetched_obj, key, val)
     fetched_obj.save()
-    return jsonify(fetched_obj.to_json())
+    return jsonify(fetched_obj.to_dict())
 
 
 @app_views.route("/states/<state_id>", methods=["DELETE"],
