@@ -19,7 +19,6 @@ def state_get_all():
     for obj in state_obj:
         state_list.append(obj.to_dict())
 
-    print(state_list)
     return jsonify(state_list)
 
 
@@ -51,12 +50,12 @@ def state_by_id(state_id):
     :return: state obj with the specified id or error
     """
 
-    fetched_obj = storage.get("State", str(state_id))
+    fetched_obj = storage.get(State, state_id)
 
     if fetched_obj is None:
         abort(404)
 
-    return jsonify(fetched_obj.to_json())
+    return jsonify(fetched_obj.to_dict())
 
 
 @app_views.route("/states/<state_id>",  methods=["PUT"], strict_slashes=False)
