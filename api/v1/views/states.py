@@ -15,8 +15,8 @@ def state_get_all():
     :return: json of all states
     """
     state_list = []
-    state_obj = storage.all(State)
-    for obj in state_obj.values():
+    state_obj = storage.all(State).values()
+    for obj in state_obj:
         state_list.append(obj.to_dict())
 
     print(state_list)
