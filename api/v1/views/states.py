@@ -65,9 +65,9 @@ def state_put(state_id):
     fetched_obj = storage.get(State, state_id)
     state_json = request.get_json()
     if fetched_obj is None:
-        abort(400, 'Not a JSON')
+        abort(404, 'Not a JSON')
     if state_json is None:
-        abort(404)
+        abort(400)
     for key, val in state_json.items():
         if key not in ["id", "created_at", "updated_at"]:
             setattr(fetched_obj, key, val)
