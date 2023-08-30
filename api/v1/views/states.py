@@ -91,5 +91,4 @@ def state_delete_by_id(state_id):
 
     storage.delete(fetched_obj)
     storage.save()
-
     return jsonify({})
