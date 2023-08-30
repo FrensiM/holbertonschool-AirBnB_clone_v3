@@ -6,7 +6,7 @@ from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 
 
-@app.route("/users", methods=['GET'], strict_slashes=False)
+@app_views.route("/users", methods=['GET'], strict_slashes=False)
 def get_users():
     """
     Lists of users
@@ -17,7 +17,7 @@ def get_users():
         list_user.append(user.to_dict())
     return jsonify(list_user)
 
-@app.route("/users/<user_id>", methods=['GET'],
+@app_views.route("/users/<user_id>", methods=['GET'],
                  strict_slashes=False)
 def get_user(user_id):
     """
@@ -29,7 +29,7 @@ def get_user(user_id):
 
     return jsonify(user.to_dict())
 
-@app.route("/user/<user_id", methods=['DELETE'])
+@app_views.route("/user/<user_id", methods=['DELETE'])
 def delete_user(user_id):
     """
     Delete  user
