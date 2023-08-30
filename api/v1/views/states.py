@@ -3,8 +3,7 @@
 route for handling State objects and operations
 """
 from flask import jsonify, abort, request
-if app_views is not None:
-    from api.v1.views import app_views
+from api.v1.views import app_views
 from models import storage
 from models.state import State
 
@@ -16,6 +15,7 @@ def state_get_all():
     :return: json of all states
     """
     state_list = []
+    print(state_list)
     state_obj = storage.all("State")
     for obj in state_obj.values():
         state_list.append(obj.to_json())
