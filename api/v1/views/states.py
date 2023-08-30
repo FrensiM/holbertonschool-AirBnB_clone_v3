@@ -16,10 +16,10 @@ def state_get_all():
     """
     state_list = []
     state_obj = storage.all(State)
-    print(state_obj)
     for obj in state_obj.values():
-        state_list.append(obj.to_json())
+        state_list.append(obj.to_dict())
 
+    print(state_list)
     return jsonify(state_list)
 
 
