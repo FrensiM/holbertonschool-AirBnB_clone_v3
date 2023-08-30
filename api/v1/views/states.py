@@ -84,7 +84,7 @@ def state_delete_by_id(state_id):
     :return: empty dict with 200 or 404 if not found
     """
 
-    fetched_obj = storage.get("State", str(state_id))
+    fetched_obj = storage.get(State, state_id)
 
     if fetched_obj is None:
         abort(404)
